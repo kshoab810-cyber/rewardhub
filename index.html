@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RewardHub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1020;
+            color: white;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 15px 0 25px;
+        }
+
+        .logo {
+            background: #7257ff;
+            padding: 12px;
+            border-radius: 14px;
+            font-size: 24px;
+        }
+
+        h1 {
+            font-size: 23px;
+        }
+
+        .subtitle {
+            color: #9da8c7;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .balance {
+            background: linear-gradient(135deg, #6848ff, #a04dff);
+            padding: 24px;
+            border-radius: 22px;
+            margin-bottom: 25px;
+        }
+
+        .balance p {
+            opacity: 0.85;
+            font-size: 14px;
+        }
+
+        .amount {
+            font-size: 34px;
+            font-weight: bold;
+            margin: 14px 0;
+        }
+
+        .unit {
+            font-size: 14px;
+        }
+
+        .section-title {
+            margin-bottom: 15px;
+            font-size: 19px;
+        }
+
+        .card {
+            background: #151c31;
+            border: 1px solid #252e48;
+            padding: 18px;
+            border-radius: 17px;
+            margin-bottom: 13px;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #a4aec9;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        button {
+            background: #7657ff;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        button:active {
+            opacity: 0.8;
+        }
+
+        .notice {
+            text-align: center;
+            color: #8d98b7;
+            font-size: 12px;
+            margin-top: 25px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🪙</div>
+        <div>
+            <h1>RewardHub</h1>
+            <p class="subtitle">Your rewards dashboard</p>
+        </div>
+    </header>
+
+    <section class="balance">
+        <p>YOUR TOTAL BALANCE</p>
+        <div class="amount">
+            <span id="balance">0</span>
+            <span class="unit">Coins</span>
+        </div>
+        <p>Complete eligible activities to earn rewards.</p>
+    </section>
+
+    <h2 class="section-title">Earn Rewards</h2>
+
+    <div class="card">
+        <h3>📺 Watch Advertisements</h3>
+        <p>View available advertisements and earn rewards when verified.</p>
+        <button onclick="showMessage()">
+            Explore Ads
+        </button>
+    </div>
+
+    <div class="card">
+        <h3>🎁 Daily Bonus</h3>
+        <p>Daily rewards will be available here.</p>
+        <button onclick="showMessage()">
+            Daily Bonus
+        </button>
+    </div>
+
+    <div class="card">
+        <h3>👥 Invite Friends</h3>
+        <p>Invite friends and explore our future referral rewards.</p>
+        <button onclick="showMessage()">
+            Invite Friends
+        </button>
+    </div>
+
+    <div class="card">
+        <h3>💰 Wallet</h3>
+        <p>Your verified rewards and withdrawal options will appear here.</p>
+        <button onclick="showMessage()">
+            Open Wallet
+        </button>
+    </div>
+
+    <p class="notice">
+        RewardHub · Demo Version<br>
+        No real earnings or withdrawals are enabled yet.
+    </p>
+
+    <script>
+        function showMessage() {
+            alert(
+                "Welcome to RewardHub! This feature will be configured in a later step."
+            );
+        }
+    </script>
+
+</body>
+</html>

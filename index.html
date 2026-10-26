@@ -1,185 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RewardHub</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b24">
+<title>RewardHub — Earn Coins</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0b1020;
-            color: white;
-            padding: 20px;
-        }
+:root {
+  --bg: #100b24;
+  --card: #1d1538;
+  --purple: #8b5cf6;
+  --pink: #ec4899;
+  --text: #ffffff;
+  --muted: #aaa2c5;
+  --green: #4ade80;
+}
 
-        header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 15px 0 25px;
-        }
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding-bottom: 85px;
+}
 
-        .logo {
-            background: #7257ff;
-            padding: 12px;
-            border-radius: 14px;
-            font-size: 24px;
-        }
+header {
+  padding: 22px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-        h1 {
-            font-size: 23px;
-        }
+.logo {
+  font-size: 23px;
+  font-weight: 800;
+}
 
-        .subtitle {
-            color: #9da8c7;
-            font-size: 13px;
-            margin-top: 5px;
-        }
+.logo span {
+  color: #c4b5fd;
+}
 
-        .balance {
-            background: linear-gradient(135deg, #6848ff, #a04dff);
-            padding: 24px;
-            border-radius: 22px;
-            margin-bottom: 25px;
-        }
+.profile {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
 
-        .balance p {
-            opacity: 0.85;
-            font-size: 14px;
-        }
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 0 16px;
+}
 
-        .amount {
-            font-size: 34px;
-            font-weight: bold;
-            margin: 14px 0;
-        }
+.welcome {
+  margin: 10px 0 20px;
+}
 
-        .unit {
-            font-size: 14px;
-        }
+.welcome h1 {
+  font-size: 25px;
+  margin-bottom: 7px;
+}
 
-        .section-title {
-            margin-bottom: 15px;
-            font-size: 19px;
-        }
+.welcome p {
+  color: var(--muted);
+  font-size: 14px;
+}
 
-        .card {
-            background: #151c31;
-            border: 1px solid #252e48;
-            padding: 18px;
-            border-radius: 17px;
-            margin-bottom: 13px;
-        }
+.balance-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #7044dc, #a044d5 65%, #ed4898);
+  box-shadow: 0 12px 35px #8b5cf633;
+}
 
-        .card h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
+.balance-card::after {
+  content: "🪙";
+  position: absolute;
+  right: 15px;
+  bottom: -12px;
+  font-size: 100px;
+  opacity: .17;
+  transform: rotate(-18deg);
+}
 
-        .card p {
-            color: #a4aec9;
-            font-size: 13px;
-            line-height: 1.5;
-        }
+.balance-label {
+  font-size: 14px;
+  opacity: .9;
+}
 
-        button {
-            background: #7657ff;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 14px;
-            margin-top: 15px;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: bold;
-        }
+.balance {
+  font-size: 38px;
+  font-weight: 800;
+  margin: 10px 0;
+}
 
-        button:active {
-            opacity: 0.8;
-        }
+.balance small {
+  font-size: 15px;
+  font-weight: 500;
+}
 
-        .notice {
-            text-align: center;
-            color: #8d98b7;
-            font-size: 12px;
-            margin-top: 25px;
-            line-height: 1.6;
-        }
-    </style>
+.demo-tag {
+  display: inline-block;
+  background: #ffffff25;
+  border: 1px solid #ffffff40;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+
+.section-title {
+  font-size: 18px;
+  margin: 28px 0 15px;
+}
+
+.tasks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
+.task {
+  border: 1px solid #ffffff12;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 19px 15px;
+  min-height: 150px;
+  transition: transform .2s;
+}
+
+.task:active {
+  transform: scale(.97);
+}
+
+.task-icon {
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  font-size: 23px;
+  margin-bottom: 13px;
+}
+
+.purple { background: #8b5cf630; }
+.pink { background: #ec489930; }
+.green { background: #4ade8030; }
+.blue { background: #38bdf830; }
+
+.task h3 {
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+
+.task p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.action {
+  border: none;
+  background: linear-gradient(100deg, var(--purple), var(--pink));
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 13px;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 14px;
+  cursor: pointer;
+}
+
+.notice {
+  margin-top: 22px;
+  padding: 15px;
+  background: #ffffff08;
+  border: 1px solid #ffffff12;
+  border-radius: 15px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.notice strong {
+  color: #d8b4fe;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: #18112c;
+  border-top: 1px solid #ffffff12;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 5px calc(12px + env(safe-area-inset-bottom));
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.nav-item span {
+  font-size: 20px;
+}
+
+.nav-item.active {
+  color: #c4b5fd;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 90px;
+  transform: translate(-50%, 20px);
+  background: #30234b;
+  border: 1px solid #ffffff20;
+  padding: 13px 18px;
+  border-radius: 13px;
+  width: max-content;
+  max-width: 90%;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s;
+  z-index: 20;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+footer {
+  text-align: center;
+  color: #776d92;
+  font-size: 11px;
+  margin: 25px 0;
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">🪙</div>
-        <div>
-            <h1>RewardHub</h1>
-            <p class="subtitle">Your rewards dashboard</p>
-        </div>
-    </header>
+<header>
+  <div class="logo">🎁 Reward<span>Hub</span></div>
+  <div class="profile">👤</div>
+</header>
 
-    <section class="balance">
-        <p>YOUR TOTAL BALANCE</p>
-        <div class="amount">
-            <span id="balance">0</span>
-            <span class="unit">Coins</span>
-        </div>
-        <p>Complete eligible activities to earn rewards.</p>
-    </section>
+<main class="container">
 
-    <h2 class="section-title">Earn Rewards</h2>
+  <section class="welcome">
+    <h1>Welcome to RewardHub 👋</h1>
+    <p>Your rewards dashboard is ready.</p>
+  </section>
 
-    <div class="card">
-        <h3>📺 Watch Advertisements</h3>
-        <p>View available advertisements and earn rewards when verified.</p>
-        <button onclick="showMessage()">
-            Explore Ads
-        </button>
+  <section class="balance-card">
+    <div class="balance-label">Your Demo Balance</div>
+    <div class="balance">
+      <span id="balance">0</span>
+      <small>Coins 🪙</small>
     </div>
+    <span class="demo-tag">✨ DEMO MODE</span>
+  </section>
 
-    <div class="card">
-        <h3>🎁 Daily Bonus</h3>
-        <p>Daily rewards will be available here.</p>
-        <button onclick="showMessage()">
-            Daily Bonus
-        </button>
-    </div>
+  <h2 class="section-title">🚀 Explore Rewards</h2>
 
-    <div class="card">
-        <h3>👥 Invite Friends</h3>
-        <p>Invite friends and explore our future referral rewards.</p>
-        <button onclick="showMessage()">
-            Invite Friends
-        </button>
-    </div>
+  <section class="tasks">
 
-    <div class="card">
-        <h3>💰 Wallet</h3>
-        <p>Your verified rewards and withdrawal options will appear here.</p>
-        <button onclick="showMessage()">
-            Open Wallet
-        </button>
-    </div>
+    <article class="task">
+      <div class="task-icon purple">📺</div>
+      <h3>Watch Ads</h3>
+      <p>Rewarded-ad feature coming soon.</p>
+      <button class="action" onclick="showToast('Rewarded ads are not connected yet.')">
+        Watch Now
+      </button>
+    </article>
 
-    <p class="notice">
-        RewardHub · Demo Version<br>
-        No real earnings or withdrawals are enabled yet.
-    </p>
+    <article class="task">
+      <div class="task-icon pink">🎁</div>
+      <h3>Daily Bonus</h3>
+      <p>Explore the daily reward feature.</p>
+      <button class="action" onclick="dailyBonus()">Claim Bonus</button>
+    </article>
 
-    <script>
-        function showMessage() {
-            alert(
-                "Welcome to RewardHub! This feature will be configured in a later step."
-            );
-        }
-    </script>
+    <article class="task">
+      <div class="task-icon green">👥</div>
+      <h3>Invite Friends</h3>
+      <p>Referral tracking coming soon.</p>
+      <button class="action" onclick="inviteFriends()">Invite Now</button>
+    </article>
+
+    <article class="task">
+      <div class="task-icon blue">👛</div>
+      <h3>My Wallet</h3>
+      <p>View demo wallet information.</p>
+      <button class="action" onclick="openWallet()">Open Wallet</button>
+    </article>
+
+  </section>
+
+  <section class="notice">
+    <strong>ℹ️ Demo Notice</strong><br>
+    This website is currently a prototype. Coins shown here have
+    no cash value. Advertisements, verified rewards, referrals and
+    withdrawals are not connected yet.
+  </section>
+
+  <footer>RewardHub © 2026 · Demo Version</footer>
+
+</main>
+
+<nav class="bottom-nav">
+  <button class="nav-item active" onclick="goHome(this)">
+    <span>🏠</span>Home
+  </button>
+  <button class="nav-item" onclick="showToast('Rewards feature is coming soon.')">
+    <span>🎯</span>Rewards
+  </button>
+  <button class="nav-item" onclick="openWallet()">
+    <span>👛</span>Wallet
+  </button>
+  <button class="nav-item" onclick="showToast('Profile settings are coming soon.')">
+    <span>👤</span>Profile
+  </button>
+</nav>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+let toastTimer;
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2600);
+}
+
+function dailyBonus() {
+  showToast("Daily bonus is a demo. Real rewards are not enabled.");
+}
+
+function inviteFriends() {
+  const link = "https://t.me/";
+  if (navigator.share) {
+    navigator.share({
+      title: "RewardHub",
+      text: "Check out RewardHub!",
+      url: link
+    }).catch(() => {});
+  } else {
+    showToast("Referral tracking is not connected yet.");
+  }
+}
+
+function openWallet() {
+  showToast("Demo wallet only. No real withdrawals are available.");
+}
+
+function goHome(button) {
+  document.querySelectorAll(".nav-item").forEach(item => {
+    item.classList.remove("active");
+  });
+  button.classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+</script>
 
 </body>
 </html>
